@@ -1,5 +1,5 @@
 import { describe, test, it, expect } from "vitest";
-import { fizzBuzz, max } from "./intro";
+import { factorial, fizzBuzz, max } from "./intro";
 
  describe('max', () => {
   it('should return the first argument if it is greater', () => {
@@ -43,5 +43,35 @@ import { fizzBuzz, max } from "./intro";
 
   it('should return the argument converted to string if it is not divisible by 3 or 5', () => {
     expect(fizzBuzz(8)).toBe('8');
+  });
+ });
+
+ describe('factorial', () => {
+  it('should return an "Perameter not valid" if argument is not a number', () => {
+    expect(factorial('ssss')).toBe('Perameter not valid');
+  });
+
+  it('should return an "Perameter not valid" if argument is a negative number', () => {
+    expect(factorial(-1)).toBe('Perameter not valid');
+  });
+
+  it('should return 1 if argument is 0', () => {
+    expect(factorial(0)).toBe(1);
+  });
+
+  it('should return 1 if argument is 1', () => {
+    expect(factorial(1)).toBe(1);
+  });
+
+  it('should return 2 if argument is 2', () => {
+    expect(factorial(2)).toBe(2);
+  });
+
+  it('should return 6 if argument is 3', () => {
+    expect(factorial(3)).toBe(6);
+  });
+
+  it('should return 24 if argument is 4', () => {
+    expect(factorial(4)).toBe(24);
   });
  });

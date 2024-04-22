@@ -12,3 +12,11 @@ export function fizzBuzz(n) {
   if (n % 5 === 0) return 'Buzz';
   return n.toString();
 }
+
+export function factorial(n) {
+  if(typeof(n) !== 'number' || n < 0){
+    return "Perameter not valid";
+  }
+  
+  return (n === 0 || n === 1) ? 1 : n * factorial(n - 1);
+}

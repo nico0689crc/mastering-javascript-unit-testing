@@ -1,5 +1,5 @@
 import { describe, it, expect } from "vitest";
-import { getCoupons, isValidUsername, validateUserInput } from "./core";
+import { canDrive, getCoupons, isValidUsername, validateUserInput } from "./core";
 
 describe('getCoupons', () => {
   const coupons = getCoupons();
@@ -94,5 +94,22 @@ describe('isValidUsername', () => {
 
   it('should return false when username\'s length is longer than 15', () => {
     expect(isValidUsername('Nicolassssssssss')).toBe(false);
+  });
+});
+
+describe('canDrive', () => {
+  it('should return error for invalid country code', () => {
+    expect(canDrive(20, 'FR')).toMatch(/invalid/i);
+  });
+
+  it.each([
+    { age: 15, country: 'US', result: false },
+    { age: 16, country: 'US', result: true },
+    { age: 17, country: 'US', result: true },
+    { age: 16, country: 'UK', result: false },
+    { age: 17, country: 'UK', result: true },
+    { age: 18, country: 'UK', result: true }
+  ])('should return $result for $age, $country', ({ age, country, result }) => {
+    expect(canDrive(age, country)).toBe(result);
   });
 });
